@@ -12,6 +12,6 @@ let items = computed<IItem[]>(() => store.state.items);
 </script>
 
 <template>
-  <New newText="Ветка Rostislav"></New>
+  <New newText="Ветка Rostislav!!"></New>
   <Body :items="items" />
 </template>
