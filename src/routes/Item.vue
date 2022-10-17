@@ -13,6 +13,7 @@
             <el-button plain type="success" round @click="changeStatus('active')">Взять в работу</el-button>
             <el-button type="success" round @click="changeStatus('done')">Завершить</el-button>
             <el-button type="danger" round @click="changeStatus('canceled')">Отменить</el-button>
+            <el-button type="danger" round @click="handleDelete">Удалить</el-button>
         </div>
     </div>
     <div v-else>Задача с таким id не найдена</div>
@@ -43,4 +44,12 @@ let changeStatus = (status: IStatus) => {
         store.commit("update", {id, item: {...item.value, status}})
     }
 }
+
+let  handleDelete = () => {
+    if(item){
+        store.commit("delete", id)
+    }
+}
+
+
 </script>

@@ -48,3 +48,17 @@ export const updateItem = (id: string, item: IItem): true | undefined => {
     return true
 
 }
+
+
+export const deleteItem = (id: string): true | undefined => {
+    let items = getItems();
+    if(!items) return undefined
+
+    let idx = items.findIndex(item => item.id === id);
+    if(idx == -1) return undefined
+
+    items = items.splice(idx, 1);
+
+    saveItems(items);
+    return true
+}

@@ -1,8 +1,7 @@
 import { IItem } from "@local-types/IItem";
-import { createItem, getItems, updateItem } from "../utils/db";
+import { createItem, deleteItem, getItems, updateItem } from "../utils/db";
 import { InjectionKey } from "vue";
 import { createStore, Store } from "vuex";
-
 
 export interface State{
     items: IItem[]
@@ -25,6 +24,12 @@ const store = createStore<State>({
             const idx = state.items.findIndex(item => item.id === id)
             state.items[idx] = item
             updateItem(id, item);
+        },
+        delete(state, id: string) {
+            const idx = state.items.findIndex((item: IItem) => item.id === id);
+
+            state.items.splice(idx,1);
+            deleteItem(id);
         }
     }
 })
